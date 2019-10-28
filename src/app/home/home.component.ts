@@ -1,8 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import { User } from '@/_models';
-import { UserService, AuthenticationService } from '@/_services';
+import { App, User } from '@/_models';
+import { AppService, AuthenticationService } from '@/_services';
 
 @Component({
     templateUrl: './home.component.html'
@@ -19,35 +20,36 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private userService: UserService
+        private router: Router,
+        private appService: AppService
     ) {
         this.currentUser = this.authenticationService.currentUserValue;
     }
 
     ngOnInit() {
-        // this.loadAllUsers();
         this.loadAllApps();
     }
 
-    // deleteUser(id: number) {
-    //     this.userService.delete(id)
-    //         .pipe(first())
-    //         .subscribe(() => this.loadAllUsers());
-    // }
-
-    // private loadAllUsers() {
-    //     this.userService.getAll()
-    //         .pipe(first())
-    //         .subscribe(users => this.users = users);
-    // }
-
     private loadAllApps() {
-        this.apps = [
-            { "name": "test1", "desc": "test1" },
-            { "name": "test2", "desc": "test2" },
-            { "name": "test3", "desc": "test3" },
-            { "name": "test4", "desc": "test4" },
-            { "name": "test5", "desc": "test5" }
-        ];
+        this.appService.getAllApps()
+            .subscribe(
+                data => {
+                    this.apps = data;
+                },
+                error => {
+                    console.log(error);
+                });
+    }
+
+    createApp() {
+        this.appService.createApp("appName", "appDesc")
+            .subscribe(
+                data => {
+                    this.apps = data;
+                    // this.router.navigate(['/']);
+                },
+                error => {
+                    console.log(error);
+                });
     }
 }

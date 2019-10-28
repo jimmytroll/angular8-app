@@ -49,11 +49,10 @@ export class LoginComponent implements OnInit {
             return;
         }
 
-        // this.loading = true;
-        console.log("Username: "+this.f.username.value);
-        console.log("Password: "+this.f.password.value);
+        this.loading = true;
+        // console.log("Username: "+this.f.username.value);
+        // console.log("Password: "+this.f.password.value);
         this.authenticationService.login(this.f.username.value, this.f.password.value)
-            /*.pipe(first())
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
@@ -62,8 +61,8 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-            */
-        console.log("this.returnUrl : "+this.returnUrl);
+            
+        // console.log("this.returnUrl : "+this.returnUrl);
         this.router.navigate([this.returnUrl]);
     }
 }

@@ -21,27 +21,15 @@ export class AuthenticationService {
     }
 
     login(username, password) {
-
-        const user1 = [{
-            "firstName": "Admin",
-            "lastName": "User",
-            "token": "2awd2qq3dq2534ewfdedd23",
-            "id": 1,
-            "username": "admin",
-            "password": "admin123"
-        }];
-        localStorage.setItem('currentUser', JSON.stringify(user1));
-        this.currentUserSubject.next(user1[0]);
-        return user1;
-        /*
-        return this.http.post<any>(`${config.apiUrl}/users/authenticate`, { username, password })
+        
+        return this.http.post<any>(`http://localhost:3000/login`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
-        */
+        
     }
 
     logout() {
