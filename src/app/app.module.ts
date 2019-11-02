@@ -11,6 +11,7 @@ import { appRoutingModule } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
+import { HomeDetailComponent } from './homeDetail';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
@@ -27,6 +28,7 @@ import { CellCustomComponent } from './_custom';
     declarations: [
         AppComponent,
         HomeComponent,
+        HomeDetailComponent,
         LoginComponent,
         RegisterComponent,
         CellCustomComponent,

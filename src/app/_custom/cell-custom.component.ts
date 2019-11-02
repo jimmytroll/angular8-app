@@ -18,5 +18,6 @@ export class CellCustomComponent implements OnInit {
     viewApp() {
         let rowData = this.params;
         console.log(rowData.data);
+        this.router.navigate(['/detail/'+rowData.data.name]);
     }
 }
