@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { App, User } from '@/_models';
 import { AppService, AuthenticationService } from '@/_services';
+import { CellCustomComponent } from '../_custom';
 
 @Component({
     templateUrl: './home.component.html'
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
 
     columnDefs = [
         { headerName: 'Name', field: 'name', sortable: true, filter: true },
-        { headerName: 'Description', field: 'desc', sortable: true, filter: true }
+        { headerName: 'Description', field: 'desc', sortable: true, filter: true },
+        { headerName: 'Actions', field: 'action', cellRendererFramework: CellCustomComponent }
     ];
 
     constructor(

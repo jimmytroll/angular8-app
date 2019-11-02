@@ -14,6 +14,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { AlertComponent } from './_components';
+import { CellCustomComponent } from './_custom';
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import { AlertComponent } from './_components';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
+        CellCustomComponent,
         AlertComponent
     ],
     providers: [
@@ -37,6 +39,7 @@ import { AlertComponent } from './_components';
         // provider used to create fake backend
         fakeBackendProvider
     ],
+    entryComponents: [CellCustomComponent],
     bootstrap: [AppComponent]
 })
 export class AppModule { };
